@@ -1,5 +1,5 @@
 return {
-    "folke/tokyonight.nvim",
+    -- "folke/tokyonight.nvim",
     "ellisonleao/gruvbox.nvim",
     config = function()
         require("gruvbox").setup({

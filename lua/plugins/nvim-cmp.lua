@@ -1,10 +1,14 @@
 return {
-    "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
     "hrsh7th/nvim-cmp",
+
+   dependencies = {
+        "neovim/nvim-lspconfig",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-vsnip",
+    },
 
     config = function()
         local cmp = require'cmp'
@@ -68,19 +72,7 @@ return {
             })
         })
 
-        ---- Set up lspconfig.
-        --local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        ---- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-        --require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-            ----capabilities = capabilities
-            --}
-            local lspconfig = require "mason"
-            local servers = {"clangd", "rust_analyzer" }
-            for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup {
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                }
-            end
-        end,
-    }
+        
+
+    end,
+}

@@ -1,7 +1,9 @@
 return {
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
+    dependencies =  {
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    },
     config = function()
         require("mason").setup({
             ui = {
@@ -20,8 +22,8 @@ return {
             -- 确保安装，根据需要填写
             ensure_installed = {
                 "clangd",
+                "cmake",
                 "lua_ls",
-                "sumneko_lua",
                 "tsserver",
                 "tailwindcss",
                 "bashls",
@@ -37,17 +39,5 @@ return {
                 "gopls",
             },
         })
-    end,
-    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "mason")
-      require("mason").setup(opts)
-
-      -- custom nvchad cmd to install all mason binaries listed
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-      end, {})
-
-      vim.g.mason_binaries_list = opts.ensure_installed
     end,
 }
