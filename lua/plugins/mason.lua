@@ -39,6 +39,7 @@ return {
             "taplo",
             "yamlls",
             "gopls",
+            "vimls",
         }
 
         require("mason-lspconfig").setup({
